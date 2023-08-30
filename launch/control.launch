@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node pkg="next_dst" type="control_client.py" name="controller" output="screen">
+    <param name="linear_speed" value="0.4"/>
+  </node>
+
+  <node pkg="next_dst" type="mission_server.py" name="mission"></node>
+
+  <!-- <node name="rviz" type="rviz" pkg="rviz" respawn="false" args="-d $(find )" -->
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch">
+    <arg name="x_pos" default="0"/>
+    <arg name="y_pos" default="0"/>
+    <arg name="z_pos" default="0.0"/>
+    <!-- <param name="linear_speed" value="1" /> -->
+    <arg name="yaw" default="0"/>
+  </include>
+  <include file="$(find turtlebot_rviz_launchers)/launch/view_robot.launch"></include>
+
+  <!-- <include file="$(find turtlebot3_rviz_launchers)/launch/view_robot.launch"></include> -->
+
+</launch>
